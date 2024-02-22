@@ -55,8 +55,8 @@ const SignupForm = () => {
             address: "",
             pincode: "",
             city: "",
-            lat: 0,
-            lon: 0
+            lat: "",
+            lon: ""
           });
 
           toast.success(response.data.message);
