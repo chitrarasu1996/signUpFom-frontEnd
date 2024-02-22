@@ -1,0 +1,192 @@
+import React, { useState } from 'react'
+import {Form,Button,Label,Input,FormGroup} from "reactstrap"
+import toast from 'react-hot-toast';
+import { registerDeliveryAgent } from '../service/API';
+const SignupForm = () => {
+
+const [agentDetails,setAgentDetails]=useState({
+  name:"",
+  email:"",
+  mobileNUmber:"",
+  password:"",
+  confirmPass:"",
+  address:"",
+  pincode:"",
+  city:""
+
+})
+
+const validation=()=>{
+  if(agentDetails.password!==agentDetails.confirmPass){
+toast.error('Password and Confirm password sholud be same')
+return false
+  }
+
+  if(agentDetails.password.length<5){
+    toast.error("password should be more more than four charactors")
+    return  false
+  }
+  return true
+}
+  const submitted=async(e)=>{
+    try {
+      e.preventDefault()
+      const isValidate=validation()
+  if(isValidate){
+    const response=await registerDeliveryAgent(agentDetails.name,agentDetails.mobileNUmber,agentDetails.email,agentDetails.password,agentDetails.address,agentDetails.pincode,agentDetails.city)
+if(response.data.result){
+  setAgentDetails({
+    ...agentDetails,
+    name:"",
+    email:"",
+    mobileNUmber:"",
+    password:"",
+    confirmPass:"",
+    address:"",
+    pincode:"",
+    city:""
+  })
+
+  toast.success(response.data.message)
+}else{
+  toast.error(response.data.message)
+}
+
+  }
+
+    } catch (error) {
+      
+      console.log(error)
+    }
+
+  }
+
+  return (
+    <div className='hole-form'>
+        <div className='form-container'>
+            <div className='p-3'>
+                <div><h3 className='text-center pb-1'>Sign Up</h3></div>
+        <Form onSubmit={submitted}> 
+        <FormGroup>
+    <Input
+      id="exampleEmail"
+      name="name"
+      placeholder=" name"
+      minLength="6"
+      
+      type="text"
+      required
+      value={agentDetails.name}
+      onChange={(e)=>setAgentDetails({...agentDetails,name:e.target.value})}
+    />
+  </FormGroup>
+  <FormGroup>
+  <Input
+                id="phone"
+                name="phone"
+                placeholder="mobile number"
+                type="tel"
+                pattern="[0-9]{10}"
+                required
+                value={agentDetails.mobileNUmber}
+                onChange={(e)=>setAgentDetails({...agentDetails,mobileNUmber:e.target.value})}
+             
+             />
+              </FormGroup>
+  <FormGroup>
+    <Label
+      for="exampleEmail"
+      hidden
+    >
+      Email
+    </Label>
+    <Input
+      id="exampleEmail"
+      name="email"
+      placeholder="email"
+      type="email"
+      required
+      value={agentDetails.email}
+      onChange={(e)=>setAgentDetails({...agentDetails,email:e.target.value})}
+   
+    />
+  </FormGroup>
+  {' '}
+  <FormGroup>
+  
+    <Input
+      id="examplePassword"
+      name="password"
+      placeholder="Password"
+      type="password"
+      required
+      value={agentDetails.password}
+      onChange={(e)=>setAgentDetails({...agentDetails,password:e.target.value})}
+   
+    />
+  </FormGroup>
+  <FormGroup>
+  
+  <Input
+    id="examplePassword1"
+    name="password1"
+    placeholder="confirm Password"
+    type="password"
+    required
+    value={agentDetails.confirmPass}
+    onChange={(e)=>setAgentDetails({...agentDetails,confirmPass:e.target.value})}
+ 
+  />
+</FormGroup>
+
+<FormGroup>
+  <div className='d-flex gap-1'>
+  <Input
+    id="adress"
+    name="address"
+    placeholder="address"
+    type="password"
+    required
+    value={agentDetails.address}
+    onChange={(e)=>setAgentDetails({...agentDetails,address:e.target.value})}
+ 
+  /> <Input
+  id="pincode"
+  name="pincode"
+  type='text'
+  maxLength={6}
+  required
+  pattern="[0-9]{6}"
+  placeholder="pincode"
+  value={agentDetails.pincode}
+  onChange={(e)=>setAgentDetails({...agentDetails,pincode:e.target.value})}
+
+/>
+</div>
+</FormGroup>
+  {' '}
+  <FormGroup>
+  
+  <Input
+    id="city"
+    name="city"
+    placeholder="city"
+    type="text"
+    required
+    value={agentDetails.city}
+    onChange={(e)=>setAgentDetails({...agentDetails,city:e.target.value})}
+ 
+  />
+</FormGroup>
+
+  <Button type='submit' className='colors'>
+    SIGN UP
+  </Button>
+</Form>
+</div>
+        </div>
+    </div>
+  )
+}
+
+export default SignupForm
