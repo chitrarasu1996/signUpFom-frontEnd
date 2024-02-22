@@ -17,10 +17,7 @@ const SignupForm = () => {
     lat: "",
     lon: ""
   });
- 
-  useEffect(() => {
-    getVisitorsIp();
-  }, [getVisitorsIp]);
+
 
   const getVisitorsIp = async () => {
     try {
@@ -30,6 +27,12 @@ const SignupForm = () => {
       console.log(error);
     }
   };
+ 
+  useEffect(() => {
+    getVisitorsIp();
+  }, [getVisitorsIp]);
+
+ 
 
 
   const getLocation = async (ipAddress) => {
