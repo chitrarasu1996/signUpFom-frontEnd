@@ -43,7 +43,7 @@ const SignupForm = () => {
  
   useEffect(() => {
     getVisitorsIp();
-  }, []);
+  }, [getVisitorsIp]);
 
  
 
