@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button, Label, Input, FormGroup } from "reactstrap"
 import toast from 'react-hot-toast';
 import { registerDeliveryAgent } from '../service/API';
 import axios from 'axios';
 
 const SignupForm = () => {
+  const [ipAddress,setIpAddress]=useState("")
   const [agentDetails, setAgentDetails] = useState({
     name: "",
     email: "",
@@ -19,7 +20,7 @@ const SignupForm = () => {
   });
  
   
-  const getLocation = async (ipAddress) => {
+  const getLocation = async () => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
 
     if (response.data.status === "success" && response.data.city && response.data.zip) {
@@ -32,19 +33,27 @@ const SignupForm = () => {
       });
     }
   }; 
-  const getVisitorsIp = useCallback(async () => {
+  const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
-      getLocation(response.data)
+   setIpAddress(response.data)
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }
 
   useEffect(() => {
     getVisitorsIp();
-  }, [getVisitorsIp]);
+    console.log("first")
+  }, []);
 
+  useEffect(()=>{
+if(ipAddress){
+getLocation()
+console.log("second")
+}
+
+  },[ipAddress])
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
