@@ -20,7 +20,8 @@ const SignupForm = () => {
  
   useEffect(() => {
     getVisitorsIp();
-  },[]);
+  }, [getVisitorsIp]);
+
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
