@@ -5,7 +5,6 @@ import { registerDeliveryAgent } from '../service/API';
 import axios from 'axios';
 
 const SignupForm = () => {
-  const [ipAddress,setIpAddress]=useState("")
   const [agentDetails, setAgentDetails] = useState({
     name: "",
     email: "",
@@ -20,37 +19,6 @@ const SignupForm = () => {
   });
  
   
-  const getLocation = async (ipAddress) => {
-    const response = await axios.get(`https://ip-api.com/json/${ipAddress}`);
-
-    if (response.data.status === "success" && response.data.city && response.data.zip) {
-      setAgentDetails({
-        ...agentDetails,
-        city: response.data.city,
-        lon: response.data.lon,
-        lat: response.data.lat
-      });
-    }
-  }; 
-  const getVisitorsIp = async () => {
-    try {
-      const response = await axios.get("https://api.ipify.org");
-      if(response.data){
-      
-        getLocation(response.data)
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getVisitorsIp();
-
-  }, []);
-
-
-
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
       toast.error('Password and Confirm password sholud be same');
