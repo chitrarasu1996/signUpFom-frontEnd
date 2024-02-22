@@ -19,6 +19,19 @@ const SignupForm = () => {
   });
 
 
+  const getLocation = async (ipAddress) => {
+    const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
+
+    if (response.data.status === "success" && response.data.city && response.data.zip) {
+      setAgentDetails({
+        ...agentDetails,
+        city: response.data.city,
+        pincode: response.data.zip,
+        lon: response.data.lon,
+        lat: response.data.lat
+      });
+    }
+  };
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
@@ -35,19 +48,6 @@ const SignupForm = () => {
  
 
 
-  const getLocation = async (ipAddress) => {
-    const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
-
-    if (response.data.status === "success" && response.data.city && response.data.zip) {
-      setAgentDetails({
-        ...agentDetails,
-        city: response.data.city,
-        pincode: response.data.zip,
-        lon: response.data.lon,
-        lat: response.data.lat
-      });
-    }
-  };
 
 
   const validation = () => {
