@@ -63,8 +63,9 @@ if(response.data.result){
 
   return (
     <div className='hole-form'>
-           <div><h3 className='text-center text-white pb-1'>Sign Up</h3></div>
-        <div className='form-container'>
+      <div className='pb-4'>
+           <div><h3 style={{fontWeight:"500"}} className='text-center text-white pb-1'>Sign up</h3></div>
+        <div className='form-container  '>
    
             <div className='p-3'>
                 
@@ -186,6 +187,7 @@ if(response.data.result){
   </Button>
 </Form>
 </div>
+        </div>
         </div>
     </div>
   )
