@@ -24,8 +24,8 @@ Input{
 }
 @media (max-width: 768px) {
   .form-container {
+    width: 80vw;
     max-width: 90vw;
-    padding: 10px;
   }
 
   .hole-form {

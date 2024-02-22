@@ -63,9 +63,11 @@ if(response.data.result){
 
   return (
     <div className='hole-form'>
+           <div><h3 className='text-center text-white pb-1'>Sign Up</h3></div>
         <div className='form-container'>
+   
             <div className='p-3'>
-                <div><h3 className='text-center pb-1'>Sign Up</h3></div>
+                
         <Form onSubmit={submitted}> 
         <FormGroup>
     <Input
