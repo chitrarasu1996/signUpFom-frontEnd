@@ -20,9 +20,6 @@ const SignupForm = () => {
     lon: ""
 
   })
-  useEffect(() => {
-    getVisitorsIp()
-  }, [])
 
   const getVisitorsIp = async () => {
     try {
@@ -33,12 +30,10 @@ const SignupForm = () => {
     }
   }
 
-
   useEffect(() => {
-    if (ipAddress) {
-      getLocation()
-    }
-  }, [ipAddress,getLocation])
+    getVisitorsIp()
+  }, [])
+
 
   const getLocation = async () => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`)
@@ -54,7 +49,11 @@ const SignupForm = () => {
       })
     }
   }
-
+  useEffect(() => {
+    if (ipAddress) {
+      getLocation()
+    }
+  }, [ipAddress,getLocation])
 
 
 
