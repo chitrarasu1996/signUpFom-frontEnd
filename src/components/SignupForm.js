@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Form, Button, Label, Input, FormGroup } from "reactstrap"
 import toast from 'react-hot-toast';
 import { registerDeliveryAgent } from '../service/API';
@@ -18,6 +18,18 @@ const SignupForm = () => {
     lon: ""
   });
 
+  const getVisitorsIp = useCallback(async () => {
+    try {
+      const response = await axios.get("https://api.ipify.org");
+      getLocation(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    getVisitorsIp();
+  }, [getVisitorsIp]);
 
   const getLocation = async (ipAddress) => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
@@ -32,23 +44,6 @@ const SignupForm = () => {
       });
     }
   };
-  const getVisitorsIp = async () => {
-    try {
-      const response = await axios.get("https://api.ipify.org");
-      getLocation(response.data)
-    } catch (error) {
-      console.log(error);
-    }
-  };
- 
-  useEffect(() => {
-    getVisitorsIp();
-  }, [getVisitorsIp]);
-
- 
-
-
-
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
