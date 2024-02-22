@@ -38,7 +38,7 @@ const SignupForm = () => {
     if (ipAddress) {
       getLocation()
     }
-  }, [ipAddress])
+  }, [ipAddress,getLocation])
 
   const getLocation = async () => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`)
