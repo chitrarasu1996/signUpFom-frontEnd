@@ -48,12 +48,8 @@ const SignupForm = () => {
   }, []);
 
   useEffect(()=>{
-if(ipAddress){
 getLocation()
-console.log("second")
-}
-
-  },[ipAddress])
+  },[])
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
