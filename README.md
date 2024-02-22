@@ -1,8 +1,8 @@
 
 Sure, here's a basic README file that you can use for your project:
 
-Project Name : signup form;
-Overview ;
+Project Name : signup form:
+Overview :
 This project is a simple signup form for delivery agents. It allows users to input their details and submit them for registration.
 
 Features :
