@@ -1,6 +1,6 @@
 import axios from "axios"
  
-const URL="http://localhost:4000/"
+const URL="https://signupfrom-backend.onrender.com/"
 
 export const registerDeliveryAgent=async(name,mobileNumber,email,password,address,pincode,city)=>{
     try {
