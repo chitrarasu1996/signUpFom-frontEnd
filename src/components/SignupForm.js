@@ -23,9 +23,9 @@ const SignupForm = () => {
     navigator.geolocation.getCurrentPosition((position)=>{
       setAgentDetails({...agentDetails,lat:position.coords.longitude,lon:position.coords.longitude})
     })
-  },[agentDetails])
+  },[])
  
- 
+
   
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
