@@ -16,9 +16,7 @@ border: 1px solid  #FE5455 !important;
 .form-container{
 background-color: white;
 width: 50vw;
-
 border-radius: 10px;
-
 }
 Button{
 border-radius: 10px !important;
@@ -34,8 +32,9 @@ Input{
 }
 @media (max-width: 768px) {
   .form-container {
-    width: 80vw;
+    width: 90vw;
     max-width: 90vw;
+    height: 90vh;
   }
 
   .hole-form {
