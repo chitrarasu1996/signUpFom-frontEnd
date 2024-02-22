@@ -17,7 +17,21 @@ const SignupForm = () => {
     lat: "",
     lon: ""
   });
+ 
+  
+  const getLocation = async (ipAddress) => {
+    const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
 
+    if (response.data.status === "success" && response.data.city && response.data.zip) {
+      setAgentDetails({
+        ...agentDetails,
+        city: response.data.city,
+        pincode: response.data.zip,
+        lon: response.data.lon,
+        lat: response.data.lat
+      });
+    }
+  }; 
   const getVisitorsIp = useCallback(async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
@@ -31,19 +45,6 @@ const SignupForm = () => {
     getVisitorsIp();
   }, [getVisitorsIp]);
 
-  const getLocation = async (ipAddress) => {
-    const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
-
-    if (response.data.status === "success" && response.data.city && response.data.zip) {
-      setAgentDetails({
-        ...agentDetails,
-        city: response.data.city,
-        pincode: response.data.zip,
-        lon: response.data.lon,
-        lat: response.data.lat
-      });
-    }
-  };
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
