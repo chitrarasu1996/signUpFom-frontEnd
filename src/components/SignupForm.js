@@ -152,6 +152,7 @@ const SignupForm = () => {
                     id="adress"
                     name="address"
                     placeholder="address"
+                    minLength={3}
                     type="text"
                     required
                     value={agentDetails.address}
@@ -203,6 +204,7 @@ const SignupForm = () => {
                   name="city"
                   placeholder="city"
                   type="text"
+                  minLength={3}
                   required
                   value={agentDetails.city}
                   onChange={(e) => setAgentDetails({ ...agentDetails, city: e.target.value })}
