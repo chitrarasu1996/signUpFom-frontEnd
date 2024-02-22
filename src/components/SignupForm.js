@@ -171,8 +171,8 @@ const SignupForm = () => {
                 </div>
               </FormGroup>
               {' '}
-              {agentDetails.lat&&agentDetails.lon&&(
-              <FormGroup>
+              {(agentDetails.lat||agentDetails.lon)&&
+                        <FormGroup>
                 <div className='d-flex gap-1'>
                   <Input
                     id="longitude"
@@ -195,7 +195,7 @@ const SignupForm = () => {
                     onChange={(e) => setAgentDetails({ ...agentDetails, lat: e.target.value })}
                   />
                 </div>
-              </FormGroup>)
+              </FormGroup>
 }
               <FormGroup >
                 <Input
