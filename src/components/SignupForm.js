@@ -18,13 +18,11 @@ const SignupForm = () => {
     lon: ""
   });
 
-
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition((position)=>{
-      setAgentDetails({...agentDetails,lat:position.coords.longitude,lon:position.coords.longitude})
-    })
-  },[])
- 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setAgentDetails((details) => ({ ...details, lat: position.coords.latitude, lon: position.coords.longitude }));
+    });
+  }, []);
 
   
   const validation = () => {
