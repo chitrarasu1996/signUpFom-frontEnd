@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button, Label, Input, FormGroup } from "reactstrap"
 import toast from 'react-hot-toast';
 import { registerDeliveryAgent } from '../service/API';
@@ -17,6 +17,15 @@ const SignupForm = () => {
     lat: "",
     lon: ""
   });
+
+
+  useEffect(()=>{
+
+    navigator.geolocation.getCurrentPosition((position)=>{
+setAgentDetails({...agentDetails,lat:position.coords.longitude,lon:position.coords.longitude})
+
+    })
+  },[])
  
   
   const validation = () => {
@@ -159,7 +168,7 @@ const SignupForm = () => {
                 </div>
               </FormGroup>
               {' '}
-              {/* <FormGroup>
+              <FormGroup>
                 <div className='d-flex gap-1'>
                   <Input
                     id="longitude"
@@ -181,7 +190,7 @@ const SignupForm = () => {
                     onChange={(e) => setAgentDetails({ ...agentDetails, lat: e.target.value })}
                   />
                 </div>
-              </FormGroup> */}
+              </FormGroup>
               <FormGroup >
                 <Input
                   id="city"
