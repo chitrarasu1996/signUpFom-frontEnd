@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const SignupForm = () => {
   const [ipAddress,setIpAddress]=useState("")
+  const [isIpAdressGot,setIpAdressGotAddress]=useState(false)
   const [agentDetails, setAgentDetails] = useState({
     name: "",
     email: "",
@@ -36,7 +37,10 @@ const SignupForm = () => {
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
-   setIpAddress(response.data)
+      if(response.data){
+        setIpAddress(true)
+      setIpAddress(response.data)
+      }
     } catch (error) {
       console.log(error);
     }
@@ -44,12 +48,10 @@ const SignupForm = () => {
 
   useEffect(() => {
     getVisitorsIp();
-    console.log("first")
+
   }, []);
 
-  useEffect(()=>{
-getLocation()
-  },[])
+
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
