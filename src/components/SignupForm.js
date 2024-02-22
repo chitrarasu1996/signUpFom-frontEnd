@@ -145,7 +145,7 @@ if(response.data.result){
     id="adress"
     name="address"
     placeholder="address"
-    type="password"
+    type="text"
     required
     value={agentDetails.address}
     onChange={(e)=>setAgentDetails({...agentDetails,address:e.target.value})}
