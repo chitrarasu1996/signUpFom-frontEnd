@@ -7,12 +7,13 @@ Overview :
 This project is a simple signup form for delivery agents. It allows users to input their details and submit them for registration.
 -------------------------------------------------------------------------------------------------------------------
 Features :
-* User input fields for name, email, mobile number, password, confirm password, address, pincode, and city.
+1 .User input fields for name, email, mobile number, password, confirm password, address, pincode, and city.
 
-*Geolocation feature to automatically fill in the latitude and longitude based on the user's current location.
+2 .Geolocation feature to automatically fill in the latitude and longitude based on the user's current location.
 
-*Form validation to ensure password and confirm password match, and password is at least 5 characters long.
-
+3. Form validation to ensure password and confirm password match, and password is at least 5 characters long.
+4.
+5.
 *API integration to register the delivery agent with the provided details.
 -----------------------------------------------------------------------------
 Getting Started :
