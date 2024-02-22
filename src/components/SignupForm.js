@@ -20,25 +20,24 @@ const SignupForm = () => {
   });
  
   
-  // const getLocation = async () => {
-  //   const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
+  const getLocation = async (ipAddress) => {
+    const response = await axios.get(`https://ip-api.com/json/${ipAddress}`);
 
-  //   if (response.data.status === "success" && response.data.city && response.data.zip) {
-  //     setAgentDetails({
-  //       ...agentDetails,
-  //       city: response.data.city,
-  //       pincode: response.data.zip,
-  //       lon: response.data.lon,
-  //       lat: response.data.lat
-  //     });
-  //   }
-  // }; 
+    if (response.data.status === "success" && response.data.city && response.data.zip) {
+      setAgentDetails({
+        ...agentDetails,
+        city: response.data.city,
+        lon: response.data.lon,
+        lat: response.data.lat
+      });
+    }
+  }; 
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
       if(response.data){
       
-      setIpAddress(response.data)
+        getLocation(response.data)
       }
     } catch (error) {
       console.log(error);
