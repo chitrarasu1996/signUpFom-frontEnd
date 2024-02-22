@@ -57,8 +57,8 @@ const SignupForm = () => {
             address: "",
             pincode: "",
             city: "",
-            lat: "",
-            lon: ""
+            lat: 0,
+            lon: 0
           });
 
           toast.success(response.data.message);
@@ -176,7 +176,7 @@ const SignupForm = () => {
                     placeholder="longitude"
                     type="text"
                     required
-                    value={agentDetails.lon}
+                    value={agentDetails.lon||0}
                     onChange={(e) => setAgentDetails({ ...agentDetails, lon: e.target.value })}
                   />
                   <Input
@@ -185,7 +185,8 @@ const SignupForm = () => {
                     type='text'
                     required
                     placeholder='latitude'
-                    pattern="[0-9]+(\.[0-9]+)?" value={agentDetails.lat}
+                    pattern="[0-9]+(\.[0-9]+)?" 
+                    value={agentDetails.lat||0}
                     onChange={(e) => setAgentDetails({ ...agentDetails, lat: e.target.value })}
                   />
                 </div>
