@@ -9,7 +9,10 @@
   align-items: center;
   
 }
-
+.form-control:focus {
+box-shadow: none !important;
+border: 1px solid  #FE5455 !important;
+}
 .form-container{
 background-color: white;
 width: 50vw;
