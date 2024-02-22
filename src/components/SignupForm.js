@@ -5,8 +5,6 @@ import { registerDeliveryAgent } from '../service/API';
 import axios from 'axios';
 
 const SignupForm = () => {
-  const [ipAddress, setIpAdress] = useState("");
-
   const [agentDetails, setAgentDetails] = useState({
     name: "",
     email: "",
@@ -23,17 +21,19 @@ const SignupForm = () => {
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
-      setIpAdress(response.data);
+      getLocation(response.data)
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+
     getVisitorsIp();
+
   }, []);
 
-  const getLocation = async () => {
+  const getLocation = async (ipAddress) => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
 
     if (response.data.status === "success" && response.data.city && response.data.zip) {
@@ -47,11 +47,6 @@ const SignupForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (ipAddress) {
-      getLocation();
-    }
-  }, [ipAddress, getLocation]);
 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
@@ -210,6 +205,7 @@ const SignupForm = () => {
                     name="latitude"
                     type='text'
                     required
+                    placeholder='latitude'
                     pattern="[0-9]+(\.[0-9]+)?" value={agentDetails.lat}
                     onChange={(e) => setAgentDetails({ ...agentDetails, lat: e.target.value })}
                   />
