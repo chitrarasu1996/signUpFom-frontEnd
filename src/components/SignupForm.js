@@ -18,13 +18,18 @@ const SignupForm = () => {
     lon: ""
   });
 
-  useEffect(() => {
+    const  setGeolocation=()=>{
     navigator.geolocation.getCurrentPosition((position) => {
       setAgentDetails((details) => ({ ...details, lat: position.coords.latitude, lon: position.coords.longitude }));
     });
+  }
+
+  useEffect(() => {
+    setGeolocation()
+  
   }, []);
 
-  
+ 
   const validation = () => {
     if (agentDetails.password !== agentDetails.confirmPass) {
       toast.error('Password and Confirm password sholud be same');
@@ -60,6 +65,7 @@ const SignupForm = () => {
           });
 
           toast.success(response.data.message);
+          setGeolocation()
         } else {
           toast.error(response.data.message);
         }
