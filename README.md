@@ -16,26 +16,23 @@ Features :
 
 Getting Started :
 Clone the repository with: 
-git clone <repository-url>
+git clone (https://github.com/chitrarasu1996/signUpFom-frontEnd.git)
  
 Install dependencies:
-bash
-Copy code
+
 npm install
- 
+
 Run the application:
-bash
-Copy code
+
 npm start
 
-Technologies Used
-React
-Reactstrap
-react-hot-toast
+Technologies Used :
+React,
+Reactstrap,
+react-hot-toast,
 axios
 
 API Endpoints;
-
 
 POST: https://signupfrom-backend.onrender.com/agent/sign_up/registerDeliveryAgent ;
 To Registers a delivery agent with the provided details.
