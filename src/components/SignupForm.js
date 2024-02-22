@@ -17,7 +17,6 @@ const SignupForm = () => {
     lat: "",
     lon: ""
   });
-
   const getVisitorsIp = async () => {
     try {
       const response = await axios.get("https://api.ipify.org");
@@ -28,10 +27,8 @@ const SignupForm = () => {
   };
 
   useEffect(() => {
-
     getVisitorsIp();
-
-  }, []);
+  },[]);
 
   const getLocation = async (ipAddress) => {
     const response = await axios.get(`http://ip-api.com/json/${ipAddress}`);
