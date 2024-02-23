@@ -26,7 +26,7 @@ const SignupForm = () => {
           lat: position.coords.latitude,
           lon: position.coords.longitude
         }));
-        console.log(position.coords.latitude, position.coords.longitude, "position")
+        
       },
       (error) => {
         if (error.code === error.PERMISSION_DENIED) {
