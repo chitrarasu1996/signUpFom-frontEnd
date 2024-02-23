@@ -12,14 +12,19 @@ Features :
 
 2.Geolocation feature to automatically fill in the latitude and longitude based on the user's current location.
 
+ here is the ui visual with automatically filled with latitude and longitude:https://drive.google.com/file/d/1p7QdgFDvft2gV5k7hYbjJu3sJV3XxNI2/view?usp=drive_link
+ 
 3.Form validation to ensure the password and confirm password match and that the password is at least 5 characters long.
 
 4.Display a message if the user denies location permission, prompting them to enable location access to find latitude and longitude.
 
-5.After enable location access and refresh the page the latitude and longitude will be updated..
+ here is the ui visual after denied the location :https://drive.google.com/file/d/1ohv_gT7JUdndNprRG6ghVbfEd8JPcPxb/view?usp=drive_link
  
+5.After enable location access and refresh the page the latitude and longitude will be updated..
+  
 6.The submit button in the signup form is used to submit the user's details for registration as a delivery agent. When the user clicks on the submit button, the form data is validated to ensure that the password and confirm password fields match and that the password is at least 5 characters long. If the form data is valid, the details are sent to the server for registration. If the registration is successful, the form is reset, and a success message is displayed. If there is an error during registration, an error message is displayed.
 
+ here is the visual after submission :https://drive.google.com/file/d/1sR9si7WQ_f5q4JJfmziSMfjN8Urwsl7-/view?usp=drive_link
 
   -------------------------------------------------------------------------------------------------------
 *API integration to register the delivery agent with the provided details.
