@@ -33,7 +33,7 @@ const SignupForm = () => {
       (error) => {
         
         if (error.code === error.PERMISSION_DENIED) {
-          toast.error('Please enable location access to find lot and lon.');
+          toast.error('Please enable location access to find lat and lon.');
         } else {
           toast.error('Failed to get current location. Please make sure location services are enabled and try again.');
         }
@@ -59,6 +59,7 @@ const SignupForm = () => {
     }
     return true;
   };
+
 
   const submitted = async (e) => {
     try {
