@@ -18,11 +18,26 @@ const SignupForm = () => {
     lon: ""
   });
 
-    const  setGeolocation=()=>{
-    navigator.geolocation.getCurrentPosition((position) => {
-      setAgentDetails((details) => ({ ...details, lat: position.coords.latitude, lon: position.coords.longitude }));
-    });
+  const setGeolocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setAgentDetails((details) => ({
+          ...details,
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        }));
+        console.log(position.coords.latitude, position.coords.longitude, "position")
+      },
+      (error) => {
+        if (error.code === error.PERMISSION_DENIED) {
+          toast.error('Location permission denied. Please enable location access to find lot and lon.');
+        } else {
+          toast.error('Failed to get current location. Please make sure location services are enabled and try again.');
+        }
+      }
+    );
   }
+  
 
   useEffect(() => {
     setGeolocation()
@@ -74,6 +89,7 @@ const SignupForm = () => {
       console.log(error);
     }
   };
+
 
   return (
     <div className='hole-form'>
@@ -172,7 +188,7 @@ const SignupForm = () => {
                 </div>
               </FormGroup>
               {' '}
-              {(agentDetails.lat||agentDetails.lon)&&
+
                         <FormGroup>
                 <div className='d-flex gap-1'>
                   <Input
@@ -197,7 +213,7 @@ const SignupForm = () => {
                   />
                 </div>
               </FormGroup>
-}
+
               <FormGroup >
                 <Input
                   id="city"
