@@ -19,6 +19,7 @@ const SignupForm = () => {
   });
 
   const setGeolocation = () => {
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setAgentDetails((details) => ({
@@ -43,7 +44,6 @@ const SignupForm = () => {
 
   useEffect(() => {
     setGeolocation()
-  
   }, []);
 
  
@@ -199,7 +199,7 @@ const SignupForm = () => {
                     pattern="[0-9]+(\.[0-9]+)?"
                     placeholder="longitude"
                     type="text"
-                    required
+                
                     value={agentDetails.lon}
                     onChange={(e) => setAgentDetails({ ...agentDetails, lon: e.target.value })}
                   />
@@ -207,7 +207,7 @@ const SignupForm = () => {
                     id="latitude"
                     name="latitude"
                     type='text'
-                    required
+                   
                     placeholder='latitude'
                     pattern="[0-9]+(\.[0-9]+)?" 
                     value={agentDetails.lat}
